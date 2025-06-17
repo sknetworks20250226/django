@@ -1,7 +1,8 @@
 {% if questions %}
     <ul>
         {% for question in questions %}
-            <li><a href = '/board/{{question.id}}'> 
+            <!-- <li><a href = '/board/{{question.id}}'>  -->
+            <li><a href = '{% url "board:question_detail" question.id %}'> 
                 {{ question.subject }} - {{ question.created_at }}</a>
             </li>
         {% endfor %}
