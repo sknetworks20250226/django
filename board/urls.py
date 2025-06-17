@@ -11,5 +11,6 @@ urlpatterns = [
     path('ask/create/<int:question_id>/',
          views.create_answer, name='create_answer'),  # 답변 생성 URL
     
-    path('question/create/', views.create_question, name='create_question')
+    path('question/create/', views.create_question, name='create_question'),
+    path('test/', views.test, name='test'),  # 텍스트 뷰 URL
 ]

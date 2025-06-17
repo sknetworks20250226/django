@@ -23,3 +23,12 @@ def create_question(request):
         Question(subject=subject, content=content).save()        
         return redirect('board:question_list')
     return render(request, 'board/create_question.html')
+
+# 임시로 Question 객체를 100개 생성하는 뷰
+def test(request):
+    # Question 객체 100개 생성
+    for i in range(100):
+        Question(
+            subject=f'질문 {i}', 
+            content=f'질문 내용 {i}').save()
+    return HttpResponse('100개의 질문이 생성되었습니다.')
