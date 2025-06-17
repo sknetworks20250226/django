@@ -18,4 +18,3 @@ class Answer(models.Model):
 
     def __str__(self):
         return f"Answer to {self.question.subject}"  # 객체를 문자열로 표현할 때 질문 제목을 포함한 답변을 반환    
-

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-def index(request):
-    return HttpResponse("안녕하세요")
+from .models import Question, Answer
 
-# Create your views here.
+def index(request):
+    questions = Question.objects.order_by('-created_at')  # 질문을 생성 시간 기준으로 내림차순 정렬
+    return render(request, 'board/index.html', {'questions': questions})
