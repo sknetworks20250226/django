@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'board.apps.BoardConfig',  # board 앱을 INSTALLED_APPS에 추가
 ]
 
 MIDDLEWARE = [
