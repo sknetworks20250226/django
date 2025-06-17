@@ -3,9 +3,9 @@
 <div class="container">
     <h1>질문 작성</h1>
     <form method="post" action="{% url 'board:create_question' %}">
-        {% csrf_token %}        
-        <input type="text" name="subject" required>                
-        <textarea name="content" rows="5" required></textarea>        
+        {% csrf_token %}
+        <input type="text" name="subject" placeholder="제목" required>
+        <textarea name="content" rows="5" placeholder="내용" required></textarea>
         <input type="submit" value="저장">
     </form>
 </div>
