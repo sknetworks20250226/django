@@ -15,3 +15,11 @@ def create_answer(request, question_id):
     Answer(question=question,
            content =request.POST.get('content')).save()  # POST 요청에서 'content' 필드의 값을 가져와 답변 생성
     return redirect('board:question_detail', question_id=question.id)  # 질문 상세 페이지로 리다이렉트
+
+def create_question(request):
+    if request.method == 'POST':
+        subject = request.POST.get('subject')
+        content = request.POST.get('content')
+        Question(subject=subject, content=content).save()        
+        return redirect('board:question_list')
+    return render(request, 'board/create_question.html')

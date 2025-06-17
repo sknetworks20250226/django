@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h1>질문 작성</h1>
+    <form method="post" action="{% url 'board:create_question' %}">
+        {% csrf_token %}        
+        <input type="text" name="subject" required>                
+        <textarea name="content" rows="5" required></textarea>        
+        <input type="submit" value="질문 작성">
+    </form>
+</div>
+{% endblock %}
