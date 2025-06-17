@@ -27,7 +27,7 @@ def create_question(request):
 # 임시로 Question 객체를 100개 생성하는 뷰
 def test(request):
     # Question 객체 100개 생성
-    for i in range(100):
+    for i in range(1, 101):
         Question(
             subject=f'질문 {i}', 
             content=f'질문 내용 {i}').save()
