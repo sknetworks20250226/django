@@ -1,10 +1,16 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Question, Answer
+from django.core.paginator import Paginator
 
 def index(request):
+    page = request.GET.get('page', 1)  # GET 요청에서 'page' 파라미터를 가져옴, 기본값은 1
     questions = Question.objects.order_by('-created_at')  # 질문을 생성 시간 기준으로 내림차순 정렬
-    return render(request, 'board/index.html', {'questions': questions})
+    paginator = Paginator(questions, 10)  # Paginator 객체 생성, 한 페이지에 10개의 질문 표시
+    paginated_questions = paginator.get_page(page)  # 현재 페이지에 해당하는 질문 목록 가져오기
+
+    return render(request, 'board/index.html', {'questions': paginated_questions})
+
 
 def detail(request, question_id):
     question = get_object_or_404(Question, id=question_id)  # 주어진 ID에 해당하는 질문이 없으면 404 에러 발생
