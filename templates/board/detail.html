@@ -1,16 +1,22 @@
-<h1>{{ question.subject }}</h1>
-<p>{{ question.content }}</p>
-<h4>답변개수 : {{ question.answer_set.count }}</h4>
-<div>
-    <ul>
-        {% for answer in question.answer_set.all %}
-            <li>{{ answer.content }}</li>
-        {% endfor %}
-    </ul>
-</div>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
 
-<form method = 'post' action = '{% url "board:create_answer" question.id %}'>
-    {% csrf_token %} 
-    <textarea name="content" rows="20"></textarea>
-    <input type="submit" value="댓글 작성">    
-</form>
+<div class="container">
+    <h1>{{ question.subject }}</h1>
+    <p>{{ question.content }}</p>
+    <h4>답변개수 : {{ question.answer_set.count }}</h4>
+    <div>
+        <ul>
+            {% for answer in question.answer_set.all %}
+                <li>{{ answer.content }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <form method = 'post' action = '{% url "board:create_answer" question.id %}'>
+        {% csrf_token %} 
+        <textarea name="content" rows="20"></textarea>
+        <p><input type="submit" value="댓글 작성"></p>    
+    </form>
+</div>
