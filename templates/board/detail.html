@@ -1,5 +1,6 @@
 <h1>{{ question.subject }}</h1>
 <p>{{ question.content }}</p>
+<h4>답변개수 : {{ question.answer_set.count }}</h4>
 <div>
     <ul>
         {% for answer in question.answer_set.all %}
